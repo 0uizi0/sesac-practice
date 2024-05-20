@@ -1,0 +1,88 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table</title>
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- 파란색 표 구현하기 -->
+    <p class="text-xl m-2">1. 파란색 표 구현하기</p>
+    <table class="border-bold" style="--color-value: blue">
+      <caption class="caption-bottom mt-2">
+        선물용과 가정용 상품구성
+      </caption>
+      <thead class="border-bold bg-fill" style="--bg-color: skyblue">
+        <tr>
+          <th>용도</th>
+          <th>증량</th>
+          <th>개수</th>
+          <th>가격</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">선물용</td>
+          <td>3KG</td>
+          <td>11~16과</td>
+          <td>3,5000원</td>
+        </tr>
+        <tr>
+          <td>5KG</td>
+          <td>18~26과</td>
+          <td>52,000원</td>
+        </tr>
+        <tr>
+          <td rowspan="2">가정용</td>
+          <td>3KG</td>
+          <td>11~16과</td>
+          <td>3,5000원</td>
+        </tr>
+        <tr>
+          <td>5KG</td>
+          <td>18~26과</td>
+          <td>52,000원</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- 연두색 표 구현하기 -->
+    <p class="text-xl m-2">2. 연두색 표 구현하기</p>
+    <table class="border-bold" style="--color-value: rgb(190 242 100)">
+      <caption class="caption-bottom mt-2">
+        선물용과 가정용 상품구성
+      </caption>
+      <thead class="border-bold bg-fill" style="--bg-color: rgb(217 249 157)">
+        <tr>
+          <th>용도</th>
+          <th>증량</th>
+          <th>개수</th>
+          <th>가격</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">선물용</td>
+          <td>3KG</td>
+          <td>11~16과</td>
+          <td>3,5000원</td>
+        </tr>
+        <tr>
+          <td>5KG</td>
+          <td>18~26과</td>
+          <td>52,000원</td>
+        </tr>
+        <tr>
+          <td rowspan="2">가정용</td>
+          <td>3KG</td>
+          <td>11~16과</td>
+          <td>3,5000원</td>
+        </tr>
+        <tr>
+          <td>5KG</td>
+          <td>18~26과</td>
+          <td>52,000원</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
