@@ -32,7 +32,7 @@
         </div>
         <!-- 게시물 상세보기 -->
         <div class="col border rounded p-4">
-          <!-- 제목 -->
+          <!-- 내용 -->
           <div class="d-flex justify-content-between">
             <div class="text-secondary">제목</div>
             <div class="fw-bold">게시글 제목</div>
@@ -69,9 +69,47 @@
             <button
               type="submit"
               class="bg-primary p-2 border-0 rounded text-white"
+              data-bs-toggle="modal"
+              data-bs-target="#modifyContent"
             >
               수정하기
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modify Modal -->
+    <div class="modal fade" id="modifyContent" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">게시글: 홍길동 게시글</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="border rounded p-3 mb-4">
+              <div class="text-secondary pb-2">제목</div>
+              <input value="원래 제목" class="form-control border-0" />
+            </div>
+            <div class="border rounded p-3">
+              <div class="text-secondary pb-2">내용</div>
+              <textarea class="form-control border-0">현재내용</textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              취소
+            </button>
+            <button type="button" class="btn btn-primary">저장</button>
           </div>
         </div>
       </div>
