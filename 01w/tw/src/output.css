@@ -453,6 +453,24 @@ tr th,
   padding: 0.75rem;
 }
 
+input {
+  border-width: 1px;
+  border-color: var(--color-value);
+  height: 1.75rem;
+  border-radius: 0.25rem;
+}
+
+button {
+  background-color: var(--bg-color);
+  border-radius: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -561,8 +579,47 @@ tr th,
   --tw-contain-style:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .border-bold {
   border-width: 2px;
+  border-color: var(--color-value);
+}
+
+.border-default {
+  border-width: 1px;
   border-color: var(--color-value);
 }
 
@@ -570,20 +627,77 @@ tr th,
   background-color: var(--bg-color);
 }
 
+.form-line-area {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
 .m-2 {
   margin: 0.5rem;
+}
+
+.m-4 {
+  margin: 1rem;
 }
 
 .mt-2 {
   margin-top: 0.5rem;
 }
 
+.flex {
+  display: flex;
+}
+
 .table {
   display: table;
 }
 
+.w-96 {
+  width: 24rem;
+}
+
 .caption-bottom {
   caption-side: bottom;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-xl {
@@ -591,8 +705,22 @@ tr th,
   line-height: 1.75rem;
 }
 
+.font-bold {
+  font-weight: 700;
+}
+
+.text-blue-400 {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
+}
+
 :root {
   --color-value: black;
   /* 기본값 */
-  --bg-color: yellow;
+  --bg-color: gray;
+  /* 기본값 */
 }

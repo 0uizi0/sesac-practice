@@ -4,13 +4,21 @@
 
 :root {
   --color-value: black; /* 기본값 */
-  --bg-color: yellow;
+  --bg-color: gray; /* 기본값 */
 }
 
 @layer base {
   tr th,
   tr td {
     @apply border-default p-3;
+  }
+
+  input {
+    @apply border-default rounded h-7;
+  }
+
+  button {
+    @apply bg-fill text-white px-4 py-2 rounded;
   }
 }
 
@@ -27,5 +35,9 @@
 
   .bg-fill {
     background-color: var(--bg-color);
+  }
+
+  .form-line-area {
+    @apply grid grid-cols-3 items-center my-4;
   }
 }
