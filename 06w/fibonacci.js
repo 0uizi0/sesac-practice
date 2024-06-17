@@ -12,21 +12,12 @@ const loopFibonacci = (n) => {
   return arr[n];
 };
 
-console.log(loopFibonacci(5)); // 5
-console.log(loopFibonacci(7)); // 13
-console.log(loopFibonacci(30)); // 832040
-
 // 2. 순수 재귀를 이용하여 구현
 const arr = [];
 const recurFibonacci = (n) => {
   if (n <= 1) return n;
   return arr[n] || (arr[n] = recurFibonacci(n - 2) + recurFibonacci(n - 1));
 };
-
-console.log("------------ 순수 재귀를 이용 ----------------");
-console.log(recurFibonacci(5)); // 5
-console.log(recurFibonacci(7)); // 13
-console.log(recurFibonacci(30)); // 832040
 
 // 3. memoization하여 구현
 const memoized = (fn) => {
@@ -39,7 +30,16 @@ const memoizedFibonacci = memoized((n) => {
   return memoizedFibonacci(n - 2) + memoizedFibonacci(n - 1);
 });
 
-console.log("------------ memoization하여 구현 ----------------");
-console.log(memoizedFibonacci(5)); // 5
-console.log(memoizedFibonacci(7)); // 13
-console.log(memoizedFibonacci(30)); // 832040
+// --- 이하 테스트용 코드 --
+const TestBed = [5, 7, 30];
+function test(fn) {
+  const fname = fn.name || "memoizedFibonacci";
+  for (const t of TestBed) {
+    console.log(`${fname}(${t}) =`, fn(t));
+  }
+  console.log("----------------------------------");
+}
+
+test(loopFibonacci);
+test(recurFibonacci);
+test(memoizedFibonacci);
