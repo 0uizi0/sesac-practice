@@ -19,3 +19,15 @@ const fibonacci = (n) => {
 console.log(fibonacci(5)); // 5
 console.log(fibonacci(7)); // 13
 console.log(fibonacci(30)); // 832040
+
+// 2. 순수 재귀를 이용하여 구현
+const arr = [];
+const recurFibonacci = (n) => {
+  if (n <= 1) return n;
+  return arr[n] || (arr[n] = recurFibonacci(n - 2) + recurFibonacci(n - 1));
+};
+
+console.log("------------ 순수 재귀를 이용 ----------------");
+console.log(recurFibonacci(5)); // 5
+console.log(recurFibonacci(7)); // 13
+console.log(recurFibonacci(30)); // 832040
