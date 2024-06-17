@@ -31,3 +31,19 @@ console.log("------------ 순수 재귀를 이용 ----------------");
 console.log(recurFibonacci(5)); // 5
 console.log(recurFibonacci(7)); // 13
 console.log(recurFibonacci(30)); // 832040
+
+// 3. memoization하여 구현
+const memoized = (fn) => {
+  const memoizedTable = {};
+  return (k) => memoizedTable[k] || (memoizedTable[k] = fn(k));
+};
+
+const memoizedFibonacci = memoized((n) => {
+  if (n <= 1) return n;
+  return memoizedFibonacci(n - 2) + memoizedFibonacci(n - 1);
+});
+
+console.log("------------ memoization하여 구현 ----------------");
+console.log(memoizedFibonacci(5)); // 5
+console.log(memoizedFibonacci(7)); // 13
+console.log(memoizedFibonacci(30)); // 832040
