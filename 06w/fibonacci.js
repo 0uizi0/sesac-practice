@@ -4,7 +4,7 @@
  */
 
 // 1. loop를 이용하여 구현
-const fibonacci = (n) => {
+const loopFibonacci = (n) => {
   const arr = [];
   for (let i = 0; i <= n; i += 1) {
     if (i <= 1) {
@@ -16,9 +16,9 @@ const fibonacci = (n) => {
   return arr[n];
 };
 
-console.log(fibonacci(5)); // 5
-console.log(fibonacci(7)); // 13
-console.log(fibonacci(30)); // 832040
+console.log(loopFibonacci(5)); // 5
+console.log(loopFibonacci(7)); // 13
+console.log(loopFibonacci(30)); // 832040
 
 // 2. 순수 재귀를 이용하여 구현
 const arr = [];
