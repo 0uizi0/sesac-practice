@@ -7,11 +7,7 @@
 const loopFibonacci = (n) => {
   const arr = [];
   for (let i = 0; i <= n; i += 1) {
-    if (i <= 1) {
-      arr.push(i);
-    } else {
-      arr.push(arr[i - 2] + arr[i - 1]);
-    }
+    arr[i] = i <= 1 ? i : arr[i - 2] + arr[i - 1];
   }
   return arr[n];
 };
