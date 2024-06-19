@@ -18,8 +18,7 @@ console.log("🚀 객체로 변환된 결과 :", convertedObj); // { 'A': [10, 2
 // obj => arr
 const makeArrayFromObject = (obj) => {
   const arr = [];
-  for (let k in obj) {
-    const v = obj[k];
+  for (const [k, v] of Object.entries(obj)) {
     arr.push([k, ...v]);
   }
   return arr;
