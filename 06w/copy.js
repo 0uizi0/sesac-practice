@@ -12,8 +12,14 @@ const shallowCopy = (obj) => {
   return newObj;
 };
 
+// 방법 1. JSON.parse(JSON.stringify()) 활용
 const deepCopy = (obj) => {
   return JSON.parse(JSON.stringify(obj));
+};
+
+// 방법 2. structuredClone() 활용
+const deepCopy2 = (obj) => {
+  return structuredClone(obj);
 };
 
 const testCase = { name: "KEJ", age: 24, addr: { id: 1, city: "Seoul" } };
@@ -32,9 +38,17 @@ console.log(
 const copy2 = deepCopy(testCase);
 copy2.age = 26;
 copy2.addr.city = "Daegu";
-copy1.addr.city = "Busan";
 console.log("🚀 깊은 복사 - 한 단계 복사 확인 :", testCase.age !== copy2.age); // true
 console.log(
   "🚀 깊은 복사 - 두 단계 복사 확인 :",
   testCase.addr.city !== copy2.addr.city
+); // false
+
+const copy3 = deepCopy2(testCase);
+copy3.age = 26;
+copy3.addr.city = "Daegu";
+console.log("🚀 깊은 복사 - 한 단계 복사 확인 :", testCase.age !== copy3.age); // true
+console.log(
+  "🚀 깊은 복사 - 두 단계 복사 확인 :",
+  testCase.addr.city !== copy3.addr.city
 ); // false
