@@ -35,8 +35,8 @@ const deepCopy = (obj) => {
   return newObj;
 };
 
-const copy = deepCopy(testCsase);
-console.log(testCase);
+const copy = deepCopy(testCase);
+console.log(testCase);ㅊ
 console.log(copy);
 
 copy.addr.city = "Busan";
