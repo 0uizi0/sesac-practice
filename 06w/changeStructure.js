@@ -6,8 +6,8 @@ const testCase = [
 
 const makeObjectFromArray = (arr) => {
   const obj = {};
-  for (let line of arr) {
-    [k, ...v] = line;
+  // 불필요한 코드 지양, 디스트럭쳐링 잘 사용해야 함
+  for (let [k, ...v] of arr) {
     obj[k] = v;
   }
   return obj;

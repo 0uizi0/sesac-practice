@@ -31,7 +31,7 @@ console.log("🚀 for-in 사용한 객체의 원소 값:", vOfObj1);
 
 // 5. for-of문을 사용하여 프로퍼티 값을 출력하시오.
 const vOfObj2 = [];
-for (let [, v] of Object.entries(obj)) {
+for (let v of Object.values(obj)) {
   vOfObj2.push(v);
 }
 console.log("🚀 for-of 사용한 객체의 원소 값:", vOfObj2);

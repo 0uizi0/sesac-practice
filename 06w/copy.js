@@ -1,6 +1,8 @@
+// DEEPCOPY -> 평가 문제
 const shallowCopy = (obj) => {
   const newObj = {};
   for (let k in obj) {
+    // TODO: Reflect.ownKeys로 받는 것이 문제 의도!
     newObj[k] = obj[k];
   }
   return newObj;
@@ -15,6 +17,8 @@ const testCase = {
 };
 
 // 재귀를 활용해 v의 타입 중 object가 존재하면 => 재귀 / 더 이상 존재하지 않고 프리미티브한 값만 존재하면 => 객체 리턴
+// TODO: null을 입력받았을 때 ERROR 해결하기
+// TODO: null, Symbol, Map, Set, WeakMap, WeakSet의 깊은 복사
 const deepCopy = (obj) => {
   const newObj = {};
   for (let k of Object.keys(obj)) {
@@ -26,7 +30,7 @@ const deepCopy = (obj) => {
       } else {
         // TODO: 배열 1 depth만 됨
         // TODO: 배열, 객체 검사 ==> 함수로 빼낼 수 있음
-        newObj[k] = v.slice();
+        newObj[k] = v.slice(); // for문에서 slice를 사용할 경우 O(N*2)이 됨 (개선 필요)
       }
       continue;
     }
@@ -36,7 +40,7 @@ const deepCopy = (obj) => {
 };
 
 const copy = deepCopy(testCase);
-console.log(testCase);ㅊ
+console.log(testCase);
 console.log(copy);
 
 copy.addr.city = "Busan";
