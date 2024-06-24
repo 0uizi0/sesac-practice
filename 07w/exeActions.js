@@ -16,11 +16,11 @@ const getV = (arr) =>
 assert.deepStrictEqual(getV(testCase), [1, 8, 27, 64, 125]);
 
 /** 수행 순서가 변경 가능한 함수 exeActions */
-const exeActions = (arr, actions) => {
+const exeActions = (fns, arr) => {
   return arr.reduce((acc, cur) => {
-    const ret = actions.reduce((v, a) => a(v), cur);
+    const ret = fns.reduce((v, a) => a(v), cur);
     acc.push(ret);
     return acc;
   }, []);
 };
-assert.deepStrictEqual(exeActions(testCase, orders), [1, 8, 27, 64, 125]);
+assert.deepStrictEqual(exeActions(orders, testCase), [1, 8, 27, 64, 125]);
