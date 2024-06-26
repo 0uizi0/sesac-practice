@@ -2,16 +2,16 @@ assert = require("assert");
 
 const push = (arr, ...args) => [...arr, ...args];
 
-const pop = (arr, deleteCnt = 1) => {
-  const ret = arr.slice(-`${deleteCnt}`);
-  return ret.length == 1 ? ret[0] : ret;
+const pop = (arr, cnt = 1) => {
+  const ret = arr.slice(-`${cnt}`);
+  return ret.length == 1 ? Number(ret) : ret;
 };
 
 const unshift = (arr, ...args) => [...args, ...arr];
 
-const shift = (arr, deleteCnt = 1) => {
-  const ret = arr.slice(deleteCnt);
-  return ret.length == 1 ? ret[0] : ret;
+const shift = (arr, cnt = 1) => {
+  const ret = arr.slice(cnt);
+  return ret.length == 1 ? Number(ret) : ret;
 };
 
 const arr = [1, 2, 3, 4];
