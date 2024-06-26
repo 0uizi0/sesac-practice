@@ -10,8 +10,7 @@ const orders = [square, sqrt, cube];
 const getV = (arr) =>
   arr.reduce((acc, cur) => {
     const ret = cube(sqrt(square(cur)));
-    acc.push(ret);
-    return acc;
+    return [...acc, ret];
   }, []);
 assert.deepStrictEqual(getV(testCase), [1, 8, 27, 64, 125]);
 
@@ -19,8 +18,7 @@ assert.deepStrictEqual(getV(testCase), [1, 8, 27, 64, 125]);
 const exeActions = (fns, arr) => {
   return arr.reduce((acc, cur) => {
     const ret = fns.reduce((v, a) => a(v), cur);
-    acc.push(ret);
-    return acc;
+    return [...acc, ret];
   }, []);
 };
 assert.deepStrictEqual(exeActions(orders, testCase), [1, 8, 27, 64, 125]);
