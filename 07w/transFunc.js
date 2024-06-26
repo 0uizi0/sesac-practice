@@ -6,7 +6,7 @@ assert.deepStrictEqual(ret1, ["1", "2", "3", "true"]);
 
 /* ex2) 다음과 같이 작동하는 classNames 함수를 작성하시오. */
 const classNames = (...args) =>
-  args.reduce((acc, cur) => `${acc}${cur == "" ? "" : " "}${cur}`).trim();
+  args.reduce((acc, cur) => `${acc}${acc && cur && " "}${cur}`);
 
 const ret2 = classNames("", "a b c", "d", "", "e");
 assert.strictEqual(ret2, "a b c d e");
