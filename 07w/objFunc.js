@@ -10,20 +10,11 @@ Object.prototype.addUser = function (data) {
 };
 
 Object.prototype.removeUser = function (data) {
-  let ret = [];
-  for (let t of this) {
-    if (t.id !== data.id) {
-      ret = [...ret, t];
-    }
-  }
-  return ret;
+  return this.filter((t) => data.id !== t.id);
 };
+
 Object.prototype.changeUser = function (dData, aData) {
-  let ret = [];
-  for (let t of this) {
-    ret = t.id == dData.id ? [...ret, aData] : [...ret, t];
-  }
-  return ret;
+  return this.map((t) => (t.id === dData.id ? aData : t));
 };
 
 console.log(users.addUser(hong)); // [kim, lee, park, hong]
