@@ -5,17 +5,23 @@ const lee = { id: 3, name: "Lee" };
 const park = { id: 4, name: "Park" };
 const users = [kim, lee, park]; // 오염되면 안됨!!
 
-Object.prototype.addUser = function (data) {
+users.addUser = function (data) {
   return [...this, data];
 };
 
-Object.prototype.removeUser = function (data) {
+users.removeUser = function (data) {
   return this.filter((t) => data.id !== t.id);
 };
 
-Object.prototype.changeUser = function (dData, aData) {
+users.changeUser = function (dData, aData) {
   return this.map((t) => (t.id === dData.id ? aData : t));
 };
+
+Object.defineProperties(users, {
+  addUser: { enumerable: false },
+  removeUser: { enumerable: false },
+  changeUser: { enumerable: false },
+});
 
 console.log(users.addUser(hong)); // [kim, lee, park, hong]
 console.log(users.removeUser(lee)); // [kim, park]
