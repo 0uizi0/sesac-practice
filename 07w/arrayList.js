@@ -1,14 +1,16 @@
 class ArrayList {
   list;
+  depth;
 
   constructor(values) {
-    this.list = ArrayList.arrayToList(values);
+    [this.list, this.depth] = ArrayList.arrayToList(values);
   }
 
   static listToArray(list) {
-    console.log("list >", list);
+    let length = 0;
     function recursive(input, org = []) {
       const t = [...org, input.value];
+      length += 1;
 
       if (typeof input.rest === "undefined") {
         return t;
@@ -17,14 +19,17 @@ class ArrayList {
       return recursive(input.rest, t);
     }
     const ret = recursive(list);
-    return ret;
+    return [ret, length];
   }
 
   static arrayToList(arr) {
+    let length = 0;
+
     function recursive(input) {
       const t = {};
       const [v, ...r] = input;
       t.values = v;
+      length += 1;
 
       if (r.length == 0) {
         return t;
@@ -34,11 +39,17 @@ class ArrayList {
       return t;
     }
     const ret = recursive(arr);
-    return ret;
+    // this.depth = length;
+    return [ret, length];
   }
 
   print() {
     console.log(JSON.stringify(this.list));
+  }
+
+  add(v, d = this.depth) {
+    console.log("v", v, "depth", d);
+    console.log("this.list", this.list);
   }
 }
 
@@ -49,7 +60,7 @@ class ArrayList {
 // ⇒ { value: 1, rest: { value: 2 } }
 
 const alist = new ArrayList([1, 2]); // alist.toString() ⇒ { value: 1, rest: { value: 2 } }s
-// alist.add(3);     // { value: 1, rest: { value: 2, rest: { value: 3 } } }
+alist.add(3); // { value: 1, rest: { value: 2, rest: { value: 3 } } }
 // alist.add(5, 1);  // { value: 1, rest: { value: 5, rest: { value: 2, rest: { value: 3 } }}
 // alist.remove(2);  // { value: 1, rest: { value: 3 } }
 // alist.add(22, 1); // { value: 1, rest: { value: 22, rest: { value: 3 } } }
