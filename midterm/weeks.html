@@ -1,0 +1,90 @@
+<!-- Debounce, throttle을 활용해 구현하기 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수강신청</title>
+  </head>
+
+  <body>
+    <div style="display: flex; width: 100%; justify-content: space-around">
+      <div>
+        <button id="kor">국어</button>
+        <label for="kor" id="korWeek">요일을 선택하세요</label>
+      </div>
+      <div>
+        <button id="math">수학</button>
+        <label for="math" id="mathWeek">요일을 선택하세요</label>
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin-top: 20px;
+      "
+    >
+      <input type="text" id="searchStr" placeholder="search..." />
+    </div>
+
+    <script>
+      searchStr.addEventListener(
+        "keyup",
+        debounce((evt) => {
+          console.log(new Date().toISOString(), "search>>", searchStr.value);
+        }, 500)
+      );
+
+      const WEEKS = "일월화수목금토";
+      function getWeek() {
+        let i = 0;
+        return () => WEEKS[i++ % 7];
+      }
+
+      const korWeeks = getWeek();
+      const mathWeeks = getWeek();
+
+      kor.addEventListener(
+        "click",
+        debounce((evt) => {
+          korWeek.innerText = korWeeks();
+        }, 500)
+      );
+
+      math.addEventListener(
+        "click",
+        throttle((evt) => {
+          mathWeek.innerText = mathWeeks();
+        }, 500)
+      );
+
+      /** delay 기간 중 n번의 호출이 있으면 마지막 호출을 기준으로 delay 실행 */
+      function throttle(cb, delay) {
+        let timer;
+
+        return () => {
+          if (timer) return;
+          timer = setTimeout(() => {
+            cb();
+            timer = null;
+          }, delay);
+        };
+      }
+
+      /** delay 기간 중 n번의 호출이 있어도 1회만 실행 */
+      function debounce(cb, delay) {
+        let timer;
+
+        return () => {
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(() => {
+            cb();
+            timer = null;
+          }, delay);
+        };
+      }
+    </script>
+  </body>
+</html>
