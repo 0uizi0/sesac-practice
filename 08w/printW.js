@@ -6,6 +6,11 @@ function upperToLower(w) {
   return w.replace(/[A-Z]/g, setStrFormat);
 }
 
+/** 풀이 */
+function upperToLowerSH(str) {
+  return str.replace(/[A-Z]/g, (matched) => `*${matched.toLowerCase()}*-`);
+}
+
 assert.strictEqual(
   upperToLower("Senior Coding Learning JS"),
   "*s*-enior *c*-oding *l*-earning *j*-*s*-"
