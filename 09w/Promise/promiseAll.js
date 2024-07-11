@@ -4,12 +4,12 @@ assert = require("assert");
 const promiseAll = (arr) => {
   return new Promise((resolve, reject) => {
     const ret = [];
-    let completed = 0;
+    let leftCnt = arr.length;
 
     arr.forEach((a, i) => {
       a.then((res) => {
         ret[i] = res;
-        if (++completed === arr.length) resolve(ret);
+        if (!(--leftCnt)) resolve(ret);
       }).catch((err) => {
         reject(err);
       });
