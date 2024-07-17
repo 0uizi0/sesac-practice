@@ -22,24 +22,16 @@ const totalPrice = SIZE_ORG.reduce(
 
 /**
  * 에러 해결 방법 )
- * 1. TSize라는 타입을 생성한 후, id 속성에 리터럴 타입을 할당한다.
- * 2. 이후, SIZE 변수에 TSize 배열 타입을 할당한다.
- * => sizeOption2의 경우 리터럴 타입으로 할당되지 않은 'MM' 때문에 에러가 발생한다.
+ * 1. as const로 readonly 타입 만들기
  */
 
-// 에러 해결 코드
-type TSize = {
-  id: "XS" | "S" | "M" | "L" | "XL";
-  price: number;
-};
-
-const SIZE: TSize[] = [
+const SIZE = [
   { id: "XS", price: 8000 },
   { id: "S", price: 10000 },
   { id: "M", price: 12000 },
   { id: "L", price: 14000 },
   { id: "XL", price: 15000 },
-];
+] as const;
 
 const sizeOption1 = { XS: 1, S: 5, M: 2, L: 2, XL: 4 };
 const totalPrice1 = SIZE.reduce(
