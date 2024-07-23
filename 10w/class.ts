@@ -2,7 +2,6 @@ import * as assert from "assert";
 
 declare global {
   interface Array<T> {
-    K: keyof T;
     // Array interface 병합
     mapBy: <K extends keyof T>(k: K) => T[K][];
     uniqBy: <K extends keyof T>(k: K) => T[K][];
@@ -10,6 +9,8 @@ declare global {
     filterBy: <K extends keyof T>(k: K, v: T[K]) => T[];
     rejectBy: <K extends keyof T>(k: K, v: T[K]) => T[];
     sortBy: (k: string) => T[];
+    firstObject: T;
+    lastObject: T;
   }
 }
 
@@ -35,18 +36,18 @@ Array.prototype.sortBy = function (prop) {
   return [...this].sort((a, b) => (a[k as string] > b[k as string] ? dNum : dNum * -1));
 };
 
-// Object.defineProperties(Array.prototype, {
-//   firstObject: {
-//     get: function () {
-//       return this[0];
-//     },
-//   },
-//   lastObject: {
-//     get: function () {
-//       return this.at(-1);
-//     },
-//   },
-// });
+Object.defineProperties(Array.prototype, {
+  firstObject: {
+    get: function () {
+      return this[0];
+    },
+  },
+  lastObject: {
+    get: function () {
+      return this.at(-1);
+    },
+  },
+});
 
 const arr = [1, 2, 3, 4, 5]; // arr.firstObject; // 1    arr.lastObject; // 5
 const hong = { id: 1, name: "Hong", dept: "HR" };
@@ -66,8 +67,8 @@ assert.deepStrictEqual(users.rejectBy("id", 2), [hong, lee]);
 assert.deepStrictEqual(users.findBy("name", "Kim"), kim);
 assert.deepStrictEqual(users.sortBy("name"), [hong, kim, lee]);
 assert.deepStrictEqual(users.sortBy("name:desc"), [lee, kim, hong]);
-// assert.deepStrictEqual(users.firstObject, hong);
-// assert.deepStrictEqual(users.lastObject, kim);
+assert.deepStrictEqual(users.firstObject, hong);
+assert.deepStrictEqual(users.lastObject, kim);
 assert.deepStrictEqual(userss.uniqBy("dept"), [
   "HR",
   "Server",
