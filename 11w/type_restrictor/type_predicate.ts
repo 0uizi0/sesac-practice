@@ -1,6 +1,8 @@
 const isStringNumber = (value: unknown): value is [string, number] =>
-  // <이 부분을 작성하시오>
-  typeof value === "string" || typeof value === "number";
+  Array.isArray(value) &&
+  value.length === 2 &&
+  typeof value[0] === "string" &&
+  typeof value[1] === "number";
 
 const f1 = (value: number | string | boolean | [string, number]) => {
   if (isStringNumber(value)) {
