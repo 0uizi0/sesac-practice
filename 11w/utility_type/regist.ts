@@ -4,7 +4,7 @@ function registUserObj({ name, age }: { name: string; age: number }) {
   return { id, name, age };
 }
 
-type RegistUserObj = Parameters<typeof registUserObj>[0];
+type RegistUserObj = Parameters<typeof registUserObj>[number];
 
 const paramObj: RegistUserObj = { name: "Hong", age: 32 };
 const newUser2 = registUserObj(paramObj);
