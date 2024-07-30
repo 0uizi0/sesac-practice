@@ -13,11 +13,19 @@ const f1 = (value: number | string | boolean | [string, number]) => {
 interface Animal {}
 interface Dog extends Animal {
   name: string;
+  isDog: boolean;
 }
 interface Cat extends Animal {
   punch(): void;
 }
+
+class Retriever implements Dog {
+  isDog = true;
+  constructor(public name: string) {}
+}
+
 function isDog(a: Animal): a is Dog {
   // <이 부분을 작성하시오>
-  return (a as Dog).name !== undefined;
+  // return "name" in a;
+  return typeof a === "object" && "isDog" in a && (a["isDog"] as boolean);
 }
