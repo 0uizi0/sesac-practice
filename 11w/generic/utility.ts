@@ -13,7 +13,8 @@ interface IDept {
 }
 
 type Change<T, K extends keyof T, U> = {
-  [x in K]: U;
+  [k in keyof T] : k extends K ? U : T[k]
 };
 type DeptCaptain = Change<IDept, "captain", IUser>;
+type DeptCaptain2 = Change<IDept, "id" | "captain", IUser>;
 // type Err = Change<IDept, "somekey", IUser>; // Error!!!
