@@ -13,13 +13,7 @@ interface IDept {
 }
 
 type Combine<T, U> = {
-  [K in keyof (T & U)]: K extends keyof T
-    ? K extends keyof U
-      ? T[K] | U[K]
-      : T[K]
-    : K extends keyof U
-    ? U[K]
-    : never;
+  [K in keyof (T & U)]: K extends keyof T & keyof U ? T[K] | U[K] : (T & U)[];
 };
 
 type ICombined = Combine<IUser, IDept>;
